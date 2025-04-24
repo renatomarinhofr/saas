@@ -1,7 +1,7 @@
 {
 	"name": "@saas/biome",
 	"version": "0.0.0",
-	"main": "biome.json",
+	"main": "index.js",
 	"private": true,
 	"scripts": {
 		"format": "biome format --write .",
