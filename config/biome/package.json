@@ -1,0 +1,14 @@
+{
+	"name": "@saas/biome",
+	"version": "0.0.0",
+	"main": "biome.json",
+	"private": true,
+	"scripts": {
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"check": "biome check --apply ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
+}
