@@ -42,6 +42,9 @@ importers:
         specifier: ^3.24.3
         version: 3.24.3
     devDependencies:
+      '@faker-js/faker':
+        specifier: ^9.7.0
+        version: 9.7.0
       '@saas/biome':
         specifier: workspace:*
         version: link:../../config/biome
@@ -295,6 +298,10 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@faker-js/faker@9.7.0':
+    resolution: {integrity: sha512-aozo5vqjCmDoXLNUJarFZx2IN/GgGaogY4TMJ6so/WLZOWpSV7fvj2dmrV6sEAnUm1O7aCrhTibjpzeDFgNqbg==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@fastify/ajv-compiler@4.0.2':
     resolution: {integrity: sha512-Rkiu/8wIjpsf46Rr+Fitd3HRP+VsxUFDDeag0hs9L0ksfnwx2g7SPQQTFL0E8Qv+rfXzQOxBJnjUB9ITUDjfWQ==}
@@ -743,6 +750,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.3':
     optional: true
+
+  '@faker-js/faker@9.7.0': {}
 
   '@fastify/ajv-compiler@4.0.2':
     dependencies:
