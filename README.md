@@ -1,6 +1,6 @@
-# Next.js SaaS + RBAC
+# Next.js SaaS RBAC Application
 
-This project contains all the necessary boilerplate to setup a multi-tenant SaaS with Next.js including authentication and RBAC authorization.
+Este é um projeto SaaS (Software as a Service) completo construído com Next.js, apresentando um robusto sistema de RBAC (Role-Based Access Control) para gerenciamento de organizações e projetos.
 
 ## Features
 
@@ -81,3 +81,118 @@ Roles & permissions.
 - Only owners may transfer organization ownership;
 - Only administrators and project authors may update/delete the project;
 - Members can leave their own organization;
+
+## Tecnologias
+
+Este projeto utiliza as seguintes tecnologias:
+
+- **Backend (API)**
+  - Node.js com Fastify
+  - Prisma ORM
+  - PostgreSQL
+  - TypeScript
+
+- **Frontend (WEB)**
+  - Next.js
+  - TypeScript
+  - TailwindCSS
+  - Shadcn
+
+## Estrutura do Projeto
+
+O projeto está organizado em uma estrutura monorepo com as seguintes aplicações:
+
+- `apps/api`: Backend da aplicação
+- `apps/web`: Frontend da aplicação
+
+## Pré-requisitos
+
+- Node.js (versão LTS recomendada)
+- Docker e Docker Compose
+- pnpm (gerenciador de pacotes)
+
+## Configuração do Ambiente
+
+1. **Clone o repositório**
+```bash
+git clone [url-do-repositorio]
+cd next-saas-rbac
+```
+
+2. **Instale as dependências**
+```bash
+pnpm install
+```
+
+3. **Configuração do ambiente**
+
+Crie os arquivos `.env` necessários:
+
+Para a API (`apps/api/.env`):
+```env
+DATABASE_URL="postgresql://docker:docker@localhost:5432/next-saas?schema=public"
+JWT_SECRET_KEY="sua-chave-secreta"
+GITHUB_CLIENT_ID="seu-github-client-id"
+GITHUB_CLIENT_SECRET="seu-github-client-secret"
+```
+
+Para o frontend (`apps/web/.env.local`):
+```env
+NEXT_PUBLIC_API_URL="http://localhost:3333"
+```
+
+## Rodando com Docker
+
+1. **Inicie o banco de dados**
+```bash
+docker-compose up -d
+```
+
+2. **Execute as migrações do banco de dados**
+```bash
+cd apps/api
+pnpm prisma migrate deploy
+```
+
+3. **Rode o seed (opcional)**
+```bash
+pnpm prisma db seed
+```
+
+## Rodando a Aplicação
+
+1. **Inicie a API**
+```bash
+cd apps/api
+pnpm dev
+```
+
+2. **Inicie o frontend**
+```bash
+cd apps/web
+pnpm dev
+```
+
+A API estará disponível em `http://localhost:3333` e o frontend em `http://localhost:3000`.
+
+## Funcionalidades Principais
+
+- Autenticação completa (email/senha e GitHub)
+- Sistema de organizações com múltiplos membros
+- Controle de acesso baseado em funções (RBAC)
+- Gerenciamento de projetos
+- Sistema de convites para organizações
+- Recuperação de senha
+- Integração com GitHub
+
+## Estrutura do Banco de Dados
+
+O banco de dados possui as seguintes entidades principais:
+
+- Users (Usuários)
+- Organizations (Organizações)
+- Members (Membros)
+- Projects (Projetos)
+- Invites (Convites)
+- Accounts (Contas vinculadas)
+- Tokens (Tokens de recuperação de senha)
