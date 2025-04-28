@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "pnpm env:load next dev --turbo",
 		"build": "pnpm env:load next build",
-		"start": "next start",
+		"start": "pnpm env:load next start",
 		"env:load": "dotenv -e ../../.env --"
 	},
 	"dependencies": {
