@@ -181,6 +181,11 @@ O banco de dados possui as seguintes entidades principais:
 - Accounts (Contas vinculadas)
 - Tokens (Tokens de recuperação de senha)
 
+## 🌐 Demo
+
+- **Frontend**: [https://saas-web-theta.vercel.app](https://saas-web-theta.vercel.app)
+- **API**: [https://saas-gndw.onrender.com](https://saas-gndw.onrender.com)
+
 ## 🚀 Tecnologias
 
 Este projeto utiliza as seguintes tecnologias:
@@ -191,7 +196,7 @@ Este projeto utiliza as seguintes tecnologias:
   - `@fastify/jwt` - Autenticação JWT
   - `@fastify/swagger` - Documentação automática da API
 - **Prisma ORM** - ORM moderno com suporte a TypeScript
-- **PostgreSQL** - Banco de dados relacional
+- **PostgreSQL** (Neon.tech) - Banco de dados serverless PostgreSQL
 - **TypeScript** - Superset JavaScript com tipagem estática
 - **Zod** - Validação de schemas com TypeScript
 - **bcryptjs** - Criptografia de senhas
@@ -233,7 +238,7 @@ O projeto está organizado em uma estrutura monorepo com as seguintes aplicaçõ
 ## 🔧 Pré-requisitos
 
 - Node.js (versão LTS recomendada)
-- Docker e Docker Compose
+- Docker e Docker Compose (para desenvolvimento local)
 - pnpm (gerenciador de pacotes)
 
 ## 🛠️ Configuração do Ambiente
@@ -255,18 +260,32 @@ Crie os arquivos `.env` necessários:
 
 Para a API (`apps/api/.env`):
 ```env
-DATABASE_URL="postgresql://docker:docker@localhost:5432/next-saas?schema=public"
+DATABASE_URL="sua-url-do-neon-tech"
 JWT_SECRET_KEY="sua-chave-secreta"
-GITHUB_CLIENT_ID="seu-github-client-id"
-GITHUB_CLIENT_SECRET="seu-github-client-secret"
+GITHUB_OAUTH_CLIENT_ID="seu-github-client-id"
+GITHUB_OAUTH_CLIENT_SECRET="seu-github-client-secret"
+GITHUB_OAUTH_CLIENT_REDIRECT_URI="sua-url-de-callback"
 ```
 
 Para o frontend (`apps/web/.env.local`):
 ```env
-NEXT_PUBLIC_API_URL="http://localhost:3333"
+NEXT_PUBLIC_API_URL="sua-url-da-api"
 ```
 
-## 🐳 Rodando com Docker
+## 🚀 Deploy
+
+O projeto está configurado para deploy nas seguintes plataformas:
+
+### Backend (API)
+- **Plataforma**: [Render](https://render.com)
+- **URL**: [https://saas-gndw.onrender.com](https://saas-gndw.onrender.com)
+- **Banco de Dados**: [Neon.tech](https://neon.tech) - PostgreSQL Serverless
+
+### Frontend (Web)
+- **Plataforma**: [Vercel](https://vercel.com)
+- **URL**: [https://saas-web-theta.vercel.app](https://saas-web-theta.vercel.app)
+
+## 🐳 Desenvolvimento Local com Docker
 
 1. **Inicie o banco de dados**
 ```bash
@@ -284,7 +303,7 @@ pnpm prisma migrate deploy
 pnpm prisma db seed
 ```
 
-## 🚀 Rodando a Aplicação
+## 🚀 Rodando a Aplicação Localmente
 
 1. **Inicie a API**
 ```bash
